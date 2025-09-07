@@ -1,0 +1,12 @@
+services:
+  rtlsdr-ogn:
+    build: rtlsdr-ogn
+    container_name: rtlsdr-ogn
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - 8080:8080
+      - 8081:8081
+      - 50001:50001
+      - 50002:50002
+    env_file: config.vars
