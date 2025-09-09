@@ -1,4 +1,4 @@
-### docker version of https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script
+### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
 Debian-based Linux Operating Systems (64bit Bookworm or newer)
