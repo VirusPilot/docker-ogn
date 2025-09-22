@@ -10,14 +10,22 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 - arm64 (64-bit ARM CPUs with hardware floating point processor)
 - x64 (64-bit AMD/Intel CPUs)
 
-### prepare
-- identify SDR serial (e.g. 868), required for the `config.vars` below
+### prepare system
 - `sudo apt update && sudo apt install git`
-- `git clone https://github.com/VirusPilot/docker-ogn`
-- `cd docker-ogn`
+- you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
+
+### prepare docker
 - `bash <(wget -q -O - https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh)`
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo usermod -aG docker $USER && newgrp docker`
+
+### prepare SDR
+- identify or set SDR serial (e.g. 868), it is are required for the `config.vars` below
+- to change the SDR serial, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
+  - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868` 
+
+### prepare ogn2readsb
+- `git clone https://github.com/VirusPilot/docker-ogn`
 
 ### configuration
 - `cd ./docker-ogn`
@@ -37,6 +45,7 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
 
 ### build
+- `cd ./docker-ogn`
 - `docker compose up --detach --build`
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo reboot`
@@ -55,10 +64,19 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 
 ### useful docker commands
 - `docker ps -a` list all docker containers, including stopped ones
-- `docker stop <container_name_or_id>` stop a running container
-- `docker rm <container_name_or_id>` deactivate a stopped container
-- `docker container prune` deactivate all stopped containers
-- `docker image ls` list docker images
-- `docker rmi <image_id_or_name>` delete docker image
-- `docker image prune` delete all docker images
-- `docker system prune -a --volumes` clean your docker environment
+- stop and deactivate containers
+  - `docker stop <container_name_or_id>` stop a running container
+  - `docker rm <container_name_or_id>` deactivate a stopped container
+  - `docker container prune` remove all stopped containers
+  - `docker compose down` stop and remove containers, networks
+  - `docker compose up --detach` create and start containers
+  - `docker compose up --detach --build` build, create and start containers
+- list and delete docker images
+  - `docker image ls` list docker images
+  - `docker rmi <image_id_or_name>` delete docker image
+  - `docker image prune` delete all docker images
+- clean your entire docker environment e.g. for a fresh `docker compose`
+  - `docker rm -f $(docker ps -aq)` force remove ALL containers
+  - `docker system prune -af --volumes` clean your docker environment
+- open a shell inside your container
+  - `docker exec -it <yourDockerContainer> bash`
