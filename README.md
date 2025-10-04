@@ -1,7 +1,9 @@
 ### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
+### NEW: native support of RTL-SDR Blog v4 SDR since Debian 13 Trixie
+
 ### supported operating systems
-Debian-based Linux Operating Systems (64bit trixie or newer)
+Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - Ubuntu
 - DietPi
 - RaspiOS
