@@ -1,7 +1,7 @@
 ### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
-Debian-based Linux Operating Systems (64bit Bookworm or newer)
+Debian-based Linux Operating Systems (64bit trixie or newer)
 - Ubuntu
 - DietPi
 - RaspiOS
@@ -43,6 +43,7 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 | GSM_CENTER_FREQ | 935.8 | default = 0, change only if you know your closest GSM900 station frequency [MHz] |
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
+| SDR_868_BIAS_T_ENABLE | 0 | enable Bias Tee ony your SDR, e.g. to power a LNA |
 
 ### build
 - `cd ./docker-ogn`
