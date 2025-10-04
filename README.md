@@ -48,7 +48,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 | GSM_CENTER_FREQ | 935.8 | default = 0, change only if you know your closest GSM900 station frequency [MHz] |
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
-| SDR_868_BIAS_T_ENABLE | 0 | enable Bias Tee ony your SDR, e.g. to power a LNA |
+| SDR_868_BIAS_T_ENABLE | 0 | set to 1 to enable Bias Tee on your SDR, e.g. to power a LNA |
 
 ### build
 - `cd ./docker-ogn`
