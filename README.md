@@ -4,6 +4,7 @@
 
 ### supported operating systems
 Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
+- Debian
 - Ubuntu
 - DietPi
 - RaspiOS
