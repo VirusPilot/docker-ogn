@@ -1,7 +1,10 @@
 ### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
+### NEW: native support of RTL-SDR Blog v4 SDR since Debian 13 Trixie
+
 ### supported operating systems
-Debian-based Linux Operating Systems (64bit Bookworm or newer)
+Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
+- Debian
 - Ubuntu
 - DietPi
 - RaspiOS
@@ -15,17 +18,19 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 
 ### prepare docker
-- `bash <(wget -q -O - https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh)`
+- `wget -q https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh && chmod +x docker-install.sh`
+- `nano docker-install.sh` and remove/disable lines #33 and #41 (software-properties-common, netcat)
+- `./docker-install.sh`
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
-- `sudo usermod -aG docker $USER && newgrp docker`
+- `sudo reboot`
 
 ### prepare SDR
 - identify or set SDR serial (e.g. 868), it is are required for the `config.vars` below
 - to change the SDR serial, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
   - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868` 
 
-### prepare ogn2readsb
-- `git clone https://github.com/VirusPilot/docker-ogn`
+### prepare ogn
+- `git clone --branch trixie https://github.com/VirusPilot/docker-ogn`
 
 ### configuration
 - `cd ./docker-ogn`
@@ -43,6 +48,7 @@ Debian-based Linux Operating Systems (64bit Bookworm or newer)
 | GSM_CENTER_FREQ | 935.8 | default = 0, change only if you know your closest GSM900 station frequency [MHz] |
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
+| SDR_868_BIAS_T_ENABLE | 0 | set to 1 to enable Bias Tee on your SDR, e.g. to power a LNA |
 
 ### build
 - `cd ./docker-ogn`
