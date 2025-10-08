@@ -30,7 +30,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
   - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868` 
 
 ### prepare ogn
-- `git clone --branch trixie https://github.com/VirusPilot/docker-ogn`
+- `git clone https://github.com/VirusPilot/docker-ogn`
 
 ### configuration
 - `cd ./docker-ogn`
