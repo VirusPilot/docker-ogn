@@ -43,6 +43,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 | STATION_LON | 10.0 | your station longitude |
 | STATION_ALT_MSL_M | 300 | your sattion altitude AMSL [m] |
 | STATION_NAME | OGNTEST | your max. 9 letter station name, please comply with [naming convention](http://wiki.glidernet.org/receiver-naming-convention) |
+| STATION_INFO | Raspberry Pi5 | optional information (up to 63 characters) about your station, e.g. contact information or hardware details |
 | FREQ_PLAN | 1 | 1=Europe/Africa (default), 2=USA/Canada, 3=South America/Australia, 4=New Zeeland |
 | GSM_CENTER_FREQ | 935.8 | default = 0, change only if you know your closest GSM900 station frequency [MHz] |
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
