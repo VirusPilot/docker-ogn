@@ -1,3 +1,11 @@
+### NOTE: upgrading from an earlier version
+if you are upgrading from an earlier version, particularly in case the `config.vars` template has changed, you need to perform the following steps:
+- note down your existing `config.vars` variable entries
+- `git checkout config.vars`
+- `git pull`
+- re-enter your prior variable entries in  the new and empty `config.vars` and fill out the new (optional) config variables
+- `docker compose --detach --build`
+
 ### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
