@@ -67,9 +67,13 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - `sudo reboot`
 
 ### apply configuration changes
-- `cd ./docker-ogn`
+- `cd ./docker-ogn2readsb`
 - `nano config.vars`
-- `docker compose up --detach --build`
+- standard build
+  - `docker compose up --detach --build`
+- build with `--force-recreate`
+  - `docker compose up --detach --build --force-recreate`
+- if you are building an update over an ssh shell that may lose its connection, please consider using `nohup <your command> &`
 
 ### monitor OGN details
 - `http://yourReceiverIP:8080`
