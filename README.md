@@ -6,7 +6,7 @@ if you are upgrading from an earlier version, particularly in case the `config.v
 - re-enter your prior variable entries in  the new and empty `config.vars` and fill out the new (optional) config variables
 - `docker compose up --detach --build --force-recreate`
 ---
-### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
+# docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
 Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
