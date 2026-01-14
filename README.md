@@ -1,12 +1,9 @@
-### NOTE: upgrading from an earlier version
-if you are upgrading from an earlier version, particularly in case the `config.vars` template has changed, you need to perform the following steps:
-- note down your existing `config.vars` variable entries
-- `git checkout config.vars`
+### NOTE: upgrading e.g. in case the OGN binaries have changed
+- `cd ./docker-ogn`
 - `git pull`
-- re-enter your prior variable entries in  the new and empty `config.vars` and fill out the new (optional) config variables
 - `docker compose up --detach --build --force-recreate`
 ---
-# docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
+# docker version of [ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
 Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
@@ -66,7 +63,6 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
   - `docker compose up --detach --build --force-recreate`
 - if you are building over an unstable IP connection:
   - `nohup docker compose up --detach --build --force-recreate &`
-- you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo reboot`
 ---
 ### apply configuration changes (e.g. station coordinates)
@@ -79,27 +75,38 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - `http://yourReceiverIP:8081`
 
 ### monitor docker container
-- `docker logs -f rtlsdr-ogn` (Ctrl-C to exit)
+- `docker logs -f rtlsdr-ogn` (`CTRL C` to exit)
 
 ### monitor docker statistics
-- `docker stats` (Ctrl-C to exit)
+- `docker stats` (`CTRL C` to exit)
 
 ### open a shell inside your container
 - `docker exec -it <yourDockerContainer> bash`
 
 ### useful docker commands
 - `docker ps -a` list all docker containers, including stopped ones
-- docker container related commands
+- docker **container** related commands
   - `docker stop <container_name_or_id>` stop a running container
   - `docker rm <container_name_or_id>` deactivate a stopped container
   - `docker container prune` remove all stopped containers
-  - `docker compose down` stop and remove containers, networks
-  - `docker compose up --detach` create and start containers
-  - `docker compose up --detach --build` build, create and start containers
-- docker image related commands
+  - `docker compose down` stop and remove all containers and networks
+  - `docker compose build --no-cache` only build images
+  - `docker compose up --detach --build --force-recreate` create images and start containers
+  - `docker compose up --detach --force-recreate` recreate and start containers
+- docker **image** related commands
   - `docker image ls` list docker images
   - `docker rmi <image_id_or_name>` delete docker image
-  - `docker image prune` delete all docker images
-- clean your entire docker environment e.g. for a fresh `docker compose`
+  - `docker image prune` delete all unused docker images
+- docker **system** related commands
+  - `docker system prune` clean your docker environment
+- clean your entire docker environment e.g. for a fresh setup
   - `docker rm -f $(docker ps -aq)` force remove ALL containers
-  - `docker system prune -af --volumes` clean your docker environment
+  - `docker system prune -af --volumes` clean your entire docker environment
+
+ ### docker terms and related meaning
+| Term       | Meaning                                              |
+| ---------- | ---------------------------------------------------- |
+| Dockerfile | Build instructions                                   |
+| Image      | Built / immutable system image                       |
+| Container  | Running instance of an image                         |
+| Compose    | Orchestration / startup plan for multiple containers |
