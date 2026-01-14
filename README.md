@@ -4,8 +4,8 @@ if you are upgrading from an earlier version, particularly in case the `config.v
 - `git checkout config.vars`
 - `git pull`
 - re-enter your prior variable entries in  the new and empty `config.vars` and fill out the new (optional) config variables
-- `docker compose --detach --build`
-
+- `docker compose up --detach --build --force-recreate`
+---
 ### docker version of [VirusPilot ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
@@ -19,7 +19,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - arm64 (64-bit ARM CPUs with hardware floating point processor)
 - x64 (64-bit AMD/Intel CPUs)
 - SDRs: native support of RTL-SDR Blog v4 SDR since Debian 13 Trixie
-
+---
 ### prepare system and docker
 - `sudo apt update && sudo apt install --yes git wget`
 - `bash <(wget -q -O - https://raw.githubusercontent.com/VirusPilot/docker-install/main/docker-install.sh)`
@@ -62,41 +62,44 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 
 ### build
 - `cd ./docker-ogn`
-- `docker compose up --detach --build`
+- standard build:
+  - `docker compose up --detach --build --force-recreate`
+- if you are building over an unstable IP connection:
+  - `nohup docker compose up --detach --build --force-recreate &`
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo reboot`
-
-### apply configuration changes
+---
+### apply configuration changes (e.g. station coordinates)
 - `cd ./docker-ogn2readsb`
 - `nano config.vars`
-- standard build
-  - `docker compose up --detach --build`
-- build with `--force-recreate`
-  - `docker compose up --detach --build --force-recreate`
-- if you are building an update over an ssh shell that may lose its connection, please consider using `nohup <your command> &`
+- `docker compose up --detach --force-recreate`
 
 ### monitor OGN details
 - `http://yourReceiverIP:8080`
 - `http://yourReceiverIP:8081`
 
 ### monitor docker container
-- `docker logs -f rtlsdr-ogn`
+- `docker logs -f rtlsdr-ogn` (Ctrl-C to exit)
+
+### monitor docker statistics
+- `docker stats` (Ctrl-C to exit)
+
+### open a shell inside your container
+- `docker exec -it <yourDockerContainer> bash`
 
 ### useful docker commands
 - `docker ps -a` list all docker containers, including stopped ones
-- stop and deactivate containers
+- docker container related commands
   - `docker stop <container_name_or_id>` stop a running container
   - `docker rm <container_name_or_id>` deactivate a stopped container
   - `docker container prune` remove all stopped containers
   - `docker compose down` stop and remove containers, networks
   - `docker compose up --detach` create and start containers
   - `docker compose up --detach --build` build, create and start containers
-- list and delete docker images
+- docker image related commands
   - `docker image ls` list docker images
   - `docker rmi <image_id_or_name>` delete docker image
   - `docker image prune` delete all docker images
 - clean your entire docker environment e.g. for a fresh `docker compose`
   - `docker rm -f $(docker ps -aq)` force remove ALL containers
   - `docker system prune -af --volumes` clean your docker environment
-- open a shell inside your container
-  - `docker exec -it <yourDockerContainer> bash`
