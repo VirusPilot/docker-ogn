@@ -59,8 +59,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 
 ### build
 - `cd ./docker-ogn`
-- standard build:
-  - `docker compose up --detach --build --force-recreate`
+- `docker compose up --detach --build --force-recreate`
 - if you are building over an unstable IP connection:
   - `nohup docker compose up --detach --build --force-recreate &`
 - `sudo reboot`
