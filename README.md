@@ -24,9 +24,13 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - `sudo reboot`
 
 ### prepare SDR
-- identify or set SDR serial (e.g. 868), it is are required for the `config.vars` below
-- to change the SDR serial, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
-  - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868` 
+- identify or set SDR_868_SERIAL (e.g. 868), it is are required for the `config.vars` below
+- to change the SDR_868_SERIAL, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
+  - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868`
+- to find out the appropriate SDR_868_PPM for your SDR, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
+  - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_test ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -p`
+  - let it run for 10-15 min
+  - note the PPM listed in the related output, e.g. `... cumulative PPM: -1` and use that for SDR_868_PPM
 
 ### prepare ogn
 - `git clone https://github.com/VirusPilot/docker-ogn`
