@@ -23,14 +23,17 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo reboot`
 
-### prepare SDR
-- identify or set SDR_868_SERIAL (e.g. 868), it is are required for the `config.vars` below
-- to change the SDR_868_SERIAL, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
+### prepare SDR_868_SERIAL
+- identify or set your SDR serial (e.g. `868`), it is are required for the `config.vars` below
+- issue the following command (with no second SDR plugged in):
   - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 868`
-- to find out the appropriate SDR_868_PPM for your SDR, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
+
+### prepare SDR_868_PPM
+- to find out the appropriate ppm for your SDR, leave only the SDR to be used for 868 MHz reception plugged in, then issue the following command:
   - `docker run --rm -it --device /dev/bus/usb --entrypoint rtl_test ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -p`
-  - let it run for 10-15 min
-  - note the PPM listed in the related output, e.g. `... cumulative PPM: -1` and use that for SDR_868_PPM
+  - let it run for 10-15 min (important so that the SDR warms up)
+  - note the ppm listed in the related output, e.g. `... cumulative PPM: -1` and use that for SDR_868_PPM
+  - modern SDRs have a TCXO, therefore SDR_868_PPM = 0 is the default
 
 ### prepare ogn
 - `git clone https://github.com/VirusPilot/docker-ogn`
