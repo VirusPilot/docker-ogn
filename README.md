@@ -1,7 +1,9 @@
 ### NOTE: upgrading e.g. in case the OGN binaries have changed
 - `cd ./docker-ogn`
+- `docker rm -f $(docker ps -aq)`
+- `docker system prune -af --volumes`
 - `git pull`
-- `docker compose up --detach --build --force-recreate`
+- `docker compose up -d --build`
 ---
 # docker version of [ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
