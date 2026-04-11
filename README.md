@@ -60,7 +60,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 | STATION_COMMENT_EMAIL |  | optional station email contact| 
 | STATION_COMMENT_WEBSITE |  | optional station website | 
 | STATION_COMMENT_NOTE |  | optional notes about your station | 
-| FREQ_PLAN | 1 | 1=Europe/Africa (default), 2=USA/Canada, 3=South America/Australia, 4=New Zealand |
+| FREQ_PLAN | 0 | 0=automatic (default), 1=EU/Africa, 2=USA/Canada, 3=South America/Australia, 4=New Zealand, 5=Israel, 6=EU/Africa 433MHz, 7=Japan |
 | GSM_CENTER_FREQ | 935.8 | default = 0, change only if you know your closest GSM900 station frequency [MHz] |
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
