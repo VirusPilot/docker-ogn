@@ -21,7 +21,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 ---
 ### prepare system and docker
 - `sudo apt update && sudo apt install --yes git wget`
-- `bash <(wget -q -O - https://raw.githubusercontent.com/VirusPilot/docker-install/main/docker-install.sh)`
+- `bash <(wget -q -O - https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh)`
 - you may be asked `Y/n` a couple of times, it is safe to answer all of them with `Y`
 - `sudo reboot`
 
