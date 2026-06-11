@@ -1,10 +1,3 @@
-### NOTE: upgrading e.g. in case the OGN binaries have changed
-- `cd ./docker-ogn`
-- `docker rm -f $(docker ps -aq)`
-- `docker system prune -af --volumes`
-- `git pull`
-- `docker compose up -d --build`
----
 # docker version of [ogn-pi34 standard install script](https://github.com/VirusPilot/ogn-pi34?tab=readme-ov-file#automatic-setup-standard-script)
 
 ### supported operating systems
@@ -68,15 +61,12 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 
 ### build
 - `cd ./docker-ogn`
-- `docker compose up --detach --build --force-recreate`
-- if you are building over an unstable IP connection:
-  - `nohup docker compose up --detach --build --force-recreate &`
-- `sudo reboot`
+- `docker compose up -d --build`
 ---
 ### apply configuration changes (e.g. station coordinates)
 - `cd ./docker-ogn2readsb`
 - `nano config.vars`
-- `docker compose up --detach --force-recreate`
+- `docker compose up -d`
 
 ### monitor OGN details
 - `http://yourReceiverIP:8080`
@@ -99,8 +89,8 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
   - `docker container prune` remove all stopped containers
   - `docker compose down` stop and remove all containers and networks
   - `docker compose build --no-cache` only build images
-  - `docker compose up --detach --build --force-recreate` create images and start containers
-  - `docker compose up --detach --force-recreate` recreate and start containers
+  - `docker compose up -d --build` create images and start containers
+  - `docker compose up -d ` recreate and start containers
 - docker **image** related commands
   - `docker image ls` list docker images
   - `docker rmi <image_id_or_name>` delete docker image
