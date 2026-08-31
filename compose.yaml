@@ -10,3 +10,5 @@ services:
       - 50000:50000
       - 50001:50001
     env_file: config.vars
+    environment:
+#      - TOA_SERVER=ogn3.glidernet.org:50014
