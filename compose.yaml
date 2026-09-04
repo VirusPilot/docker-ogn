@@ -12,3 +12,4 @@ services:
     env_file: config.vars
     environment:
 #      - TOA_SERVER=ogn3.glidernet.org:50014
+#      - MERGE_SERVER=flarm-collector.opensky-network.org:20002
